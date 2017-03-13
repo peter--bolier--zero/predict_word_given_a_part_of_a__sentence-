@@ -50,26 +50,29 @@ shinyUI(fluidPage(
   # Wanted to show intermediate steps, didnt work in shiny, only a progress bar.
   
   # Footer, progress, result and explanation
+  
   fluidRow(
-    h4("Let's see", 
-       align = "center", style = "font-family: 'Lobster', cursive; font-weight: 500; line-height: 1.1;", width="80%"),
     column(width=10, offset = 1,
-       h4("Words and probablity"),
-       dataTableOutput("view")
+      tabsetPanel(
+        tabPanel("Result",
+          h4("Let's see", 
+             align = "center", style = "font-family: 'Lobster', cursive; font-weight: 500; line-height: 1.1;", width="80%"),
+          h4("Words and probablity"), dataTableOutput("view")
+        ),
+        tabPanel("Explanation",
+          h4("The word prediction is based on a (relative) simple set of ngrams, in this application we first use a 
+four-gram (also known as quadgram) using three words to lookup the fourth. To enhance the prediction capabilities, we also look for only two words 
+in the four-gram skipping one word." ),
+          h4("Example, sentence: Love that film and haven't seen it in quite some"),
+          h4("Used words: in quite some"),
+          h4("quadgram lookup:"),
+          h4("in quite some; in <skip> some"),
+          h4("The probabilities are derived from the frequency of the words (i.e. the number of time a word was found in the corpora) and we use a fixed weight, 70% for the quadgrams, 20% for the trigrams and 10% for the bigrams and unigrams. These weights are currently not adapted the the input."),
+          h4("If we haven't found enough words (like 10) we look further in three-grams, two-grams or in the end in the unigrams. In the tab 'steps taken' the steps of the algorithm are shown."),
+          h4("Note that when we have a partial match, i.e. 2 out of 3 words the probablity is decreased by 2/3 for the words found through the partial match.")
+        )
+      )
     )
   ),
-  hr(style="border-color: #eeeeee; border-width: 2px;"),
-  
-  
-  h5("Explanation"),
-  h6("The word prediction is based on a (relative) simple set of ngrams, in this application we first use a 
-     four-gram using three words to lookup the fourth. To enhance the prediction capabilities, we also look for only two words
-     in the fourgram skipping one." ),
-  h6("Example, sentence: Love that film and haven't seen it in quite some"),
-  h6("Used words: in quite some"),
-  h6("n=4 gram lookup:"),
-  h6("in quite some; in <skip> some"),
-  h6("If we haven't found enough words (like 10) we look further in three-grams, two-grams or in the end in the unigrams."),
-  
   hr(style="border-color: #eeeeee; border-width: 5px;")
 ))
