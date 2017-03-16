@@ -17,3 +17,6 @@ The prediction algorithm is fairly simple:
 6 - use the unigrams.
 
 Still to do: better clean up, simplify algorithm, or look for a smarter algorithm with a better prediction.
+
+Shiny app, deployed at: https://peterbolier.shinyapps.io/predict_word_given_a_part_of_a__sentence/
+Presentation at: http://rpubs.com/peterbolier/basicwordprediction

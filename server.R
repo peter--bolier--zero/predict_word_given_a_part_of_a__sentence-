@@ -15,6 +15,6 @@ shinyServer(function(input, output) {
   # the result is a table
   output$view <- renderDataTable({
     sentence <- textInput()
-    wordspredicted <- predictnextword(sentence)
+    predictedwords <- predictnextword(sentence)
   })
 })

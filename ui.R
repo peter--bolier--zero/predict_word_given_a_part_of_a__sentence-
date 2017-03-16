@@ -66,9 +66,10 @@ in the four-gram skipping one word." ),
           h4("Example, sentence: Love that film and haven't seen it in quite some"),
           h4("Used words: in quite some"),
           h4("quadgram lookup:"),
-          h4("in quite some; in <skip> some"),
+          h5("- in quite some"),
+          h5("- in <skip> some"),
           h4("The probabilities are derived from the frequency of the words (i.e. the number of time a word was found in the corpora) and we use a fixed weight, 70% for the quadgrams, 20% for the trigrams and 10% for the bigrams and unigrams. These weights are currently not adapted the the input."),
-          h4("If we haven't found enough words (like 10) we look further in three-grams, two-grams or in the end in the unigrams. In the tab 'steps taken' the steps of the algorithm are shown."),
+          h4("If we haven't found enough words (like 10) we look further in three-grams, two-grams or in the end in the unigrams."),
           h4("Note that when we have a partial match, i.e. 2 out of 3 words the probablity is decreased by 2/3 for the words found through the partial match.")
         )
       )

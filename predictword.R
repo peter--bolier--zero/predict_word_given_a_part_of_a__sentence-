@@ -137,11 +137,11 @@ predictnextword<- function (line="") {
     
     if (nrow(toplist) < 10) {
       # look 4 more
-      shortlist <- subset(pn4, 
-                        word1 == as.character(input.data$word1) 
+      shortlist <- subset(pn4,
+                        word1 == as.character(input.data$word1)
                       & word2 == as.character(input.data$word2) )
       # shortlist$step <- "quadgram, 2 words used (1 & 2)."
-      
+
       answers = nrow(shortlist)
       if (answers >  5) {
         answers = 5
@@ -151,12 +151,12 @@ predictnextword<- function (line="") {
         toplist <- rbind(toplist, shortlist[order(shortlist$p, decreasing = TRUE)[1:answers],c("predict","p")])
         toplist<-aggregate(p ~ predict, toplist, sum)
       }
-    }    
+    }
 
     if (nrow(toplist) < 10) {
       # look 4 more
-      shortlist <- subset(pn4, 
-                           word2 == as.character(input.data$word2) 
+      shortlist <- subset(pn4,
+                           word2 == as.character(input.data$word2)
                          & word3 == as.character(input.data$word3) )
       # shortlist$step <- "quadgram, 2 words used (2 & 3)."
 
@@ -196,10 +196,10 @@ predictnextword<- function (line="") {
       
       if (nrow(toplist) < 10) {
         # look 4 more
-        shortlist <- subset(pn3, 
+        shortlist <- subset(pn3,
                             word1 == as.character(input.data$word2) )
-        # shortlist$step <- "trigram, 1 word used (1)."      
-        
+        # shortlist$step <- "trigram, 1 word used (1)."
+
         answers = nrow(shortlist)
         if (answers >  5) {
           answers = 5
@@ -213,9 +213,9 @@ predictnextword<- function (line="") {
 
       if (nrow(toplist) < 10) {
         # look 4 more
-        shortlist <- subset(pn3, 
+        shortlist <- subset(pn3,
                              word2 == as.character(input.data$word3) )
-        # shortlist$step <- "trigram, 1 word used (2)."      
+        # shortlist$step <- "trigram, 1 word used (2)."
 
         answers = nrow(shortlist)
         if (answers >  5) {
@@ -226,7 +226,7 @@ predictnextword<- function (line="") {
           toplist <- rbind(toplist, shortlist[order(shortlist$p, decreasing = TRUE)[1:answers],c("predict","p")])
           toplist<-aggregate(p ~ predict, toplist, sum)
         }
-      }      
+      }
     }
   }
   
